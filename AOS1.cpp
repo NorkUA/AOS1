@@ -7,7 +7,6 @@
 using namespace std;
 using namespace chrono;
 
-
 const long n = 100000;
 
 double int_assign_time() {
@@ -358,7 +357,7 @@ double char_division(double char_as) {
 }
 
 
-double max_v(const double vls[20]) {
+double max_value(const double vls[20]) {
     double res_max = 0;
     for (int i = 0; i < 20; i++) {
         if (vls[i] > res_max) {
@@ -370,7 +369,8 @@ double max_v(const double vls[20]) {
 
 
 void output(double vls[20], double res_max) {
-    char op[4] = { '+', '-', '*', '/' };
+    cout << "    Type     Operation                                                     Persent\n";
+    char op[4] = { '+  ', '-  ', '*  ', '/  ' };
     string types[5] = { "   int    ", "   long   ", "  double  ", "  float   ", "   char   " };
     for (int i = 0; i < 20; i++) {
         cout << op[i % 4] << types[i / 4];
@@ -427,7 +427,7 @@ int main() {
     times[18] = char_multiplication(avg_char_as);
     times[19] = char_division(avg_char_as);
 
-    double m_v = max_v(times);
+    double m_v = max_value(times);
     output(times, m_v);
 
     return 0;
