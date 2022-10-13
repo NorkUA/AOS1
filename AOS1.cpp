@@ -1,6 +1,4 @@
-﻿// AOS1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
+﻿
 #include <iostream>
 #include <string>
 #include <chrono>
@@ -13,15 +11,16 @@ using namespace chrono;
 const long n = 100000;
 
 double int_assign_time() {
-    int a = 1, b = 2, c = 3, d = 4, e = 5, f =6, g = 7, h = 8, j =9, k = 10;
+    int a = 1, b = 2, c = 3, d = 4, e = 5;
+    int f = 1, g = 2, h = 3, j = 4, k = 5;
     auto start = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = b; b = c; c = d; d = e; e = f; f = g; g = h; h = j; j = k; k = a;
+        a = b; b = c; c = d; d = e; e = f;
+        f = g; g = h; h = j; j = k; k = a;
     }
     auto finish = high_resolution_clock::now();
-    return (double)(finish - start).count();
+    return ( double)(finish - start).count();
 }
-
 
 double avg_int_assign() {
     double gen_time = 0;
@@ -31,12 +30,13 @@ double avg_int_assign() {
     return gen_time / 10;
 }
 
-
 double long_assign_time() {
-    int a = 100000, b = a + 1, c = b + 1, d = c + 1, e = d + 1, f = e + 1, g = f + 1, h = g + 1, j = h + 1, k = j + 1;
+    int a = 123456, b = 123457, c = 123458, d = 123459, e = 200000;
+    int f = 123456, g = 123457, h = 123458, j = 123459, k = 200000;
     auto start = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = b; b = c; c = d; d = e; e = f; f = g; g = h; h = j; j = k; k = a;
+        a = b; b = c; c = d; d = e; e = f;
+        f = g; g = h; h = j; j = k; k = a;
     }
     auto finish = high_resolution_clock::now();
     return (double)(finish - start).count();
@@ -51,12 +51,13 @@ double avg_long_assign() {
     return gen_time / 10;
 }
 
-
 double double_assign_time() {
-    double a = 1.234, b = a + 1, c = b + 1, d = c + 1, e = d + 1, f = e + 1, g = f + 1, h = g + 1, j = h + 1, k = j + 1;
+    double a = 1.234, b = 1.235, c = 1.236, d = 1.237, e = 1.238;
+    double f = 1.234, g = 1.235, h = 1.236, j = 1.237, k = 1.238;
     auto start = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = b; b = c; c = d; d = e; e = f; f = g; g = h; h = j; j = k; k = a;
+        a = b; b = c; c = d; d = e; e = f;
+        f = g; g = h; h = j; j = k; k = a;
     }
     auto finish = high_resolution_clock::now();
     return (double)(finish - start).count();
@@ -73,10 +74,12 @@ double avg_double_assign() {
 
 
 double float_assign_time() {
-    double a = 1.23, b = a + 1, c = b + 1, d = c + 1, e = d + 1, f = e + 1, g = f + 1, h = g + 1, j = h + 1, k = j + 1;
+    double a = 1.1, b = 1.2, c = 1.3, d = 1.4, e = 1.5;
+    double f = 1.1, g = 1.2, h = 1.3, j = 1.4, k = 1.5;
     auto start = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = b; b = c; c = d; d = e; e = f; f = g; g = h; h = j; j = k; k = a;
+        a = b; b = c; c = d; d = e; e = f; 
+        f = g; g = h; h = j; j = k; k = a;
     }
     auto finish = high_resolution_clock::now();
     return (double)(finish - start).count();
@@ -92,10 +95,12 @@ double avg_float_assign() {
 }
 
 double char_assign_time() {
-    char a, b = 2, c = 3, d = 4, e = 5, f = 6, g = 7, h = 8, j = 9, k = 0;
+    char a = 1, b = 2, c = 3, d = 4, e = 5;
+    char f = 1, g = 2, h = 3, j = 4, k = 5;
     auto start = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = b; b = c; c = d; d = e; e = f; f = g; g = h; h = j; j = k; k = a;
+        a = b; b = c; c = d; d = e; e = f; 
+        f = g; g = h; h = j; j = k; k = a;
     }
     auto finish = high_resolution_clock::now();
     return (double)(finish - start).count();
@@ -110,254 +115,246 @@ double avg_char_assign() {
 }
 
 
-/*
- * a - adding
- * s - subtraction
- * m - multiplication
- * d - division
-*/
-
-
-double int_a(double int_as) {
-    int a, b, c, d, e, f, g, h, j = 34, k = 12;
+double int_sum(double int_as) {
+    int a =1, b=2, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j + k; b = k + a; c = a + b; d = b + c; e = c + d;
-        f = d + e; g = e + f; h = f + g; j = g + h; k = h + j;
+        c = a + b; d = b + c; e = d + c; f = e + d; g = f + e;
+        h = g + f; j = g + h; k = h + j; a = k + j; b = a + k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - int_as);
 }
 
 
-double int_s(double int_as) {
-    int a, b, c, d, e, f, g, h, j = 34, k = 12;
+double int_subtraction(double int_as) {
+    int a = 2, b = 1, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j - k; b = k - a; c = a - b; d = b - c; e = c - d;
-        f = d - e; g = e - f; h = f - g; j = g - h; k = h - j;
+        c = a - b; d = b - c; e = d - c; f = e - d; g = f - e;
+        h = g - f; j = g - h; k = h - j; a = k - j; b = a - k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - int_as);
 }
 
 
-double int_m(double int_as) {
-    int a, b, c, d, e, f, g, h, j = 34, k = 12;
+double int_multiplication(double int_as) {
+    int a = 2, b = 1, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j * k; b = k * a; c = a * b; d = b * c; e = c * d;
-        f = d * e; g = e * f; h = f * g; j = g * h; k = h * j;
+        c = a * b; d = b * c; e = d * c; f = e * d; g = f * e;
+        h = g * f; j = g * h; k = h * j; a = k * j; b = a * k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - int_as);
 }
 
 
-double int_d(double int_as) {
-    int a, b, c, d, e, f, g, h, j, k;
+double int_division(double int_as) {
+    int a =2, b =1, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        j = 19683, k = 3;
-        a = j / k; b = a / k; c = b / k; d = c / k; e = d / k;
-        f = e / k; g = f / k; h = g / k; j = h / k; k = j / k;
+        a = 25, b = 2;
+        c = a / b; d = c / b; e = d / b; f = e / b; g = f / b;
+        h = g / b; j = h / b; k = j / b; a = k / b; b = a / b;
     }
     auto end = high_resolution_clock::now();
-    return n * 10 * 1e9 / ((double)(end - beginning).count() - int_as * 1.2);
+    return n * 10 * 1e9 / ((double)(end - beginning).count() - int_as );
 }
 
 
-double long_a(double long_as) {
-    long a, b, c, d, e, f, g, h, j = 123456, k = 54321;
+double long_sum(double long_as) {
+    long a = 100000, b = 2, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j + k; b = k + a; c = a + b; d = b + c; e = c + d;
-        f = d + e; g = e + f; h = f + g; j = g + h; k = h + j;
-    }
-    auto end = high_resolution_clock::now();
-    return n * 10 * 1e9 / ((double)(end - beginning).count() - long_as);
-}
-
-
-double long_s(double long_as) {
-    long a, b, c, d, e, f, g, h, j = 123456, k = 54321;
-    auto beginning = high_resolution_clock::now();
-    for (int i = 0; i < n; i++) {
-        a = j - k; b = k - a; c = a - b; d = b - c; e = c - d;
-        f = d - e; g = e - f; h = f - g; j = g - h; k = h - j;
+        c = a + b; d = b + c; e = d + c; f = e + d; g = f + e;
+        h = g + f; j = g + h; k = h + j; a = k + j; b = a + k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - long_as);
 }
 
 
-double long_m(double long_as) {
-    long a, b, c, d, e, f, g, h, j = 123456, k = 54321;
+double long_subtraction(double long_as) {
+    long a = 100000, b = 2, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j * k; b = k * a; c = a * b; d = b * c; e = c * d;
-        f = d * e; g = e * f; h = f * g; j = g * h; k = h * j;
+        c = a - b; d = b - c; e = d - c; f = e - d; g = f - e;
+        h = g - f; j = g - h; k = h - j; a = k - j; b = a - k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - long_as);
 }
 
 
-double long_d(double long_as) {
-    long a, b, c, d, e, f, g, h, j, k;
+double long_multiplication(double long_as) {
+    long a = 100000, b = 2, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        j = 4782969, k = 3;
-        a = j / k; b = a / k; c = b / k; d = c / k; e = d / k;
-        f = e / k; g = f / k; h = g / k; j = h / k; k = j / k;
+        c = a * b; d = b * c; e = d * c; f = e * d; g = f * e;
+        h = g * f; j = g * h; k = h * j; a = k * j; b = a * k;
+    }
+    auto end = high_resolution_clock::now();
+    return n * 10 * 1e9 / ((double)(end - beginning).count() - long_as);
+}
+
+
+double long_division(double long_as) {
+    long a , b , c, d, e, f, g, h, j, k;
+    auto beginning = high_resolution_clock::now();
+    for (int i = 0; i < n; i++) {
+        a = 100000, b = 2;
+        c = a / b; d = c / b; e = d / b; f = e / b; g = f / b;
+        h = g / b; j = h / b; k = j / b; a = k / b; b = a / b;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - long_as * 1.2);
 }
 
 
-double double_a(double double_as) {
-    double a, b, c, d, e, f, g, h, j = 12.345, k = 67.89;
+double double_sum(double double_as) {
+    double a=1.111, b=2.222, c, d, e, f, g, h, j , k ;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j + k; b = k + a; c = a + b; d = b + c; e = c + d;
-        f = d + e; g = e + f; h = f + g; j = g + h; k = h + j;
+        c = a + b; d = b + c; e = d + c; f = e + d; g = f + e;
+        h = g + f; j = g + h; k = h + j; a = k + j; b = a + k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - double_as);
 }
 
 
-double double_s(double double_as) {
-    double a, b, c, d, e, f, g, h, j = 12.345, k = 67.89;
+double double_subtraction(double double_as) {
+    double a = 1.111, b = 2.222, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j - k; b = k - a; c = a - b; d = b - c; e = c - d;
-        f = d - e; g = e - f; h = f - g; j = g - h; k = h - j;
+        c = a - b; d = b - c; e = d - c; f = e - d; g = f - e;
+        h = g - f; j = g - h; k = h - j; a = k - j; b = a - k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - double_as);
 }
 
 
-double double_m(double double_as) {
-    double a, b, c, d, e, f, g, h, j = 12.345, k = 67.89;
+double double_multiplication(double double_as) {
+    double a = 1.111, b = 2.222, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j * k; b = k * a; c = a * b; d = b * c; e = c * d;
-        f = d * e; g = e * f; h = f * g; j = g * h; k = h * j;
+        c = a * b; d = b * c; e = d * c; f = e * d; g = f * e;
+        h = g * f; j = g * h; k = h * j; a = k * j; b = a * k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - double_as);
 }
 
 
-double double_d(double double_as) {
-    double a, b, c, d, e, f, g, h, j = 125.25, k = 50.15;
+double double_division(double double_as) {
+    double a = 1.111, b = 2.222, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j / k; b = k / a; c = a / b; d = c / b; e = c / d;
-        f = d / e; g = f / e; h = f / g; j = f / h; k = j / h;
+        c = a / b; d = c / b; e = d / b; f = e / b; g = f / b;
+        h = g / b; j = h / b; k = j / b; a = k / b; b = a / b;
     }
     auto end = high_resolution_clock::now();
-    return n * 10 * 1e9 / ((double)(end - beginning).count() - double_as * 1.2);
+    return n * 10 * 1e9 / (( double)(end - beginning).count() - double_as * 1.2);
 }
 
 
-double float_a(double float_as) {
-    float a, b, c, d, e, f, g, h, j = 54.321, k = 98.76;
+double float_sum(double float_as) {
+    float a = 37.1, b=3.2, c, d, e, f, g, h, j , k ;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j + k; b = k + a; c = a + b; d = b + c; e = c + d;
-        f = d + e; g = e + f; h = f + g; j = g + h; k = h + j;
-    }
-    auto end = high_resolution_clock::now();
-    return n * 10 * 1e9 / ((double)(end - beginning).count() - float_as);
-}
-
-
-double float_s(double float_as) {
-    double a, b, c, d, e, f, g, h, j = 54.321, k = 98.76;
-    auto beginning = high_resolution_clock::now();
-    for (int i = 0; i < n; i++) {
-        a = j - k; b = k - a; c = a - b; d = b - c; e = c - d;
-        f = d - e; g = e - f; h = f - g; j = g - h; k = h - j;
+        c = a + b; d = b + c; e = d + c; f = e + d; g = f + e;
+        h = g + f; j = g + h; k = h + j; a = k + j; b = a + k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - float_as);
 }
 
 
-double float_m(double float_as) {
-    double a, b, c, d, e, f, g, h, j = 54.321, k = 98.76;
+double float_subtraction(double float_as) {
+    float a = 37.1, b = 3.2, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j * k; b = k * a; c = a * b; d = b * c; e = c * d;
-        f = d * e; g = e * f; h = f * g; j = g * h; k = h * j;
+        c = a - b; d = b - c; e = d - c; f = e - d; g = f - e;
+        h = g - f; j = g - h; k = h - j; a = k - j; b = a - k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - float_as);
 }
 
 
-double float_d(double float_as) {
-    double a, b, c, d, e, f, g, h, j = 50.5, k = 2.5;
+double float_multiplication(double float_as) {
+    float a = 37.1, b = 3.2, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j / k; b = k / a; c = a / b; d = c / b; e = c / d;
-        f = d / e; g = f / e; h = f / g; j = f / h; k = j / h;
+        c = a * b; d = a * c; e = d * c; f = e * d; g = f * e;
+        h = g * f; j = g * h; k = h * j; a = k * j; b = a * k;
     }
     auto end = high_resolution_clock::now();
-    return n * 10 * 1e9 / ((double)(end - beginning).count() - float_as * 1.2);
+    return n * 10 * 1e9 / ((double)(end - beginning).count() - float_as);
 }
 
 
-double char_a(double char_as) {
-    char a, b, c, d, e, f, g, h, j = 3, k = 12;
+double float_division(double float_as) {
+    double a= 37.1, b = 3.2, c, d, e, f, g, h, j , k ;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j + k; b = k + a; c = a + b; d = b + c; e = c + d;
-        f = d + e; g = e + f; h = f + g; j = g + h; k = h + j;
+        c = a / b; d = c / b; e = d / b; f = e / b; g = f / b;
+        h = g / b; j = h / b; k = j / b; a = k / b; b = a / b;
     }
     auto end = high_resolution_clock::now();
-    return n * 10 * 1e9 / ((double)(end - beginning).count() - char_as);
+    return n * 10 * 1e9 / ((double)(end - beginning).count() - float_as );
 }
 
 
-double char_s(double char_as) {
-    char a, b, c, d, e, f, g, h, j = 8, k = 11;
+double char_sum(double char_as) {
+    char a = 2, b = 5, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        a = j - k; b = k - a; c = a - b; d = b - c; e = c - d;
-        f = d - e; g = e - f; h = f - g; j = g - h; k = h - j;
-    }
-    auto end = high_resolution_clock::now();
-    return n * 10 * 1e9 / ((double)(end - beginning).count() - char_as);
-}
-
-
-double char_m(double char_as) {
-    char a, b, c, d, e, f, g, h, j = 6, k = 13;
-    auto beginning = high_resolution_clock::now();
-    for (int i = 0; i < n; i++) {
-        a = j * k; b = k * a; c = a * b; d = b * c; e = c * d;
-        f = d * e; g = e * f; h = f * g; j = g * h; k = h * j;
+        c = a + b; d = b + c; e = d + c; f = e + d; g = f + e;
+        h = g + f; j = g + h; k = h + j; a = k + j; b = a + k;
     }
     auto end = high_resolution_clock::now();
     return n * 10 * 1e9 / ((double)(end - beginning).count() - char_as);
 }
 
 
-double char_d(double char_as) {
+double char_subtraction(double char_as) {
+    char a = 2, b = 5, c, d, e, f, g, h, j, k;
+    auto beginning = high_resolution_clock::now();
+    for (int i = 0; i < n; i++) {
+        c= a - b; d = b - c; e = d - c; f = e - d; g = f - e;
+        h = g - f; j = g - h; k = h - j; a = k - j; b = a - k; 
+    }
+    auto end = high_resolution_clock::now();
+    return n * 10 * 1e9 / ((double)(end - beginning).count() - char_as);
+}
+
+
+double char_multiplication(double char_as) {
+    char a=2, b=5, c, d, e, f, g, h, j , k ;
+    auto beginning = high_resolution_clock::now();
+    for (int i = 0; i < n; i++) {
+        c = a * b; d = b * c; e = d * c; f = e * d; g = f * e;
+        h = g * f; j = g * h; k = h * j; a = k * j; b = a * k;
+    }
+    auto end = high_resolution_clock::now();
+    return n * 10 * 1e9 / ((double)(end - beginning).count() - char_as);
+}
+
+
+double char_division(double char_as) {
     char a, b, c, d, e, f, g, h, j, k;
     auto beginning = high_resolution_clock::now();
     for (int i = 0; i < n; i++) {
-        j = 25, k = 5;
-        a = j / k; b = k / a; c = a / b; d = c / b; e = c / d;
-        f = d / e; g = f / e; h = f / g; j = f / h; k = j / h;
+        a = 2, b = 5;
+        c = a / b; d = c / b; e = d / b; f = e / b; g = f / b;
+        h = g / b; j = h / b; k = j / b; a = k / b; b = a / b;
     }
     auto end = high_resolution_clock::now();
-    return n * 10 * 1e9 / ((double)(end - beginning).count() - char_as * 1.2);
+    return n * 10 * 1e9 / ((double)(end - beginning).count() - char_as  );
 }
 
 
@@ -405,30 +402,30 @@ int main() {
 
     double times[20];
 
-    times[0] = int_a(avg_int_as);
-    times[1] = int_s(avg_int_as);
-    times[2] = int_m(avg_int_as);
-    times[3] = int_d(avg_int_as);
+    times[0] = int_sum(avg_int_as);
+    times[1] = int_subtraction(avg_int_as);
+    times[2] = int_multiplication(avg_int_as);
+    times[3] = int_division(avg_int_as);
 
-    times[4] = long_a(avg_long_as);
-    times[5] = long_s(avg_long_as);
-    times[6] = long_m(avg_long_as);
-    times[7] = long_d(avg_long_as);
+    times[4] = long_sum(avg_long_as);
+    times[5] = long_subtraction(avg_long_as);
+    times[6] = long_multiplication(avg_long_as);
+    times[7] = long_division(avg_long_as);
 
-    times[8] = double_a(avg_double_as);
-    times[9] = double_s(avg_double_as);
-    times[10] = double_m(avg_double_as);
-    times[11] = double_d(avg_double_as);
+    times[8] = double_sum(avg_double_as);
+    times[9] = double_subtraction(avg_double_as);
+    times[10] = double_multiplication(avg_double_as);
+    times[11] = double_division(avg_double_as);
 
-    times[12] = float_a(avg_float_as);
-    times[13] = float_s(avg_float_as);
-    times[14] = float_m(avg_float_as);
-    times[15] = float_d(avg_float_as);
+    times[12] = float_sum(avg_float_as);
+    times[13] = float_subtraction(avg_float_as);
+    times[14] = float_multiplication(avg_float_as);
+    times[15] = float_division(avg_float_as);
 
-    times[16] = char_a(avg_char_as);
-    times[17] = char_s(avg_char_as);
-    times[18] = char_m(avg_char_as);
-    times[19] = char_d(avg_char_as);
+    times[16] = char_sum(avg_char_as);
+    times[17] = char_subtraction(avg_char_as);
+    times[18] = char_multiplication(avg_char_as);
+    times[19] = char_division(avg_char_as);
 
     double m_v = max_v(times);
     output(times, m_v);
